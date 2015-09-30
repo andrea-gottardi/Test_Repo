@@ -29,7 +29,7 @@ public class Game {
 
 	public static void main(String[] args) {
 		startGame();
-	}
+	} 
  
 	/**
 	 * Start the game asking the user the actions to perform,
