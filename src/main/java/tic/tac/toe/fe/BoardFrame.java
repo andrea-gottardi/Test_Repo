@@ -9,6 +9,11 @@ import javax.swing.JPanel;
 import tic.tac.toe.model.Symbols;
 import tic.tac.toe.model.TicTacToe;
 
+/**
+ * This frame contains the board that displays the 
+ * game status. It paint a 3x3 grid and on it paints 
+ * X and O.
+ * */
 public class BoardFrame extends JPanel {
 
 	private TicTacToe ticTacToe;

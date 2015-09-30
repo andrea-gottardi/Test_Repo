@@ -17,6 +17,11 @@ import tic.tac.toe.model.TicTacToe;
 import tic.tac.toe.thread.GameThread;
 import tic.tac.toe.utils.Utils;
 
+/**
+ * This Jframe is the main Window. Contains the main application buttons
+ * and the BoardFrame containing the board. When Play is pressed the game 
+ * start and when Exit is pressed the user close the application.
+ * */
 public class Frame extends JFrame implements ActionListener {
 
 	private BoardFrame bf;
@@ -30,10 +35,10 @@ public class Frame extends JFrame implements ActionListener {
 
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.setLayout(new GridLayout(1, 2));
-		JButton gioca = new JButton("Gioca");
+		JButton gioca = new JButton("Play");
 		gioca.addActionListener(this);
 		buttonPanel.add(gioca);
-		JButton esci = new JButton("Esci");
+		JButton esci = new JButton("Exit");
 		esci.addActionListener(this);
 		buttonPanel.add(esci);
 		buttonPanel.setVisible(true);
@@ -49,9 +54,9 @@ public class Frame extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent ae) {
-		if (ae.getActionCommand().equals("Gioca")) {
+		if (ae.getActionCommand().equals("Play")) {
 			new GameThread(bf).start();
-		} else if (ae.getActionCommand().equals("Esci")) {
+		} else if (ae.getActionCommand().equals("Exit")) {
 			this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
 		}
 

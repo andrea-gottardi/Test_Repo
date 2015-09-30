@@ -6,6 +6,11 @@ import tic.tac.toe.model.Symbols;
 import tic.tac.toe.model.TicTacToe;
 import tic.tac.toe.utils.Utils;
 
+/**
+ * This class is used from the UI Frame to start
+ * each new game. It works like the Game class
+ * but at the end the thread will dead.
+ * */
 public class GameThread extends Thread {
 
 	private BoardFrame bf;

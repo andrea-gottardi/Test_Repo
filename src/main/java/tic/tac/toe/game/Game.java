@@ -38,6 +38,8 @@ public class Game {
 	 * The char 's' starts the game, make a move every
 	 * two seconds and display the current status.
 	 * 
+	 * The char 'u' starts the game in the UI mode.
+	 * 
 	 * The char 'q' quit the game.
 	 * 
 	 * */
