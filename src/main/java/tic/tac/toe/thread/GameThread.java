@@ -1,5 +1,7 @@
 package tic.tac.toe.thread;
 
+import javax.swing.JOptionPane;
+
 import tic.tac.toe.exception.EndException;
 import tic.tac.toe.fe.BoardFrame;
 import tic.tac.toe.model.Symbols;
@@ -44,7 +46,7 @@ public class GameThread extends Thread {
 				run=false;
 			} catch (EndException e) {
 				this.bf.repaint();
-				// TODO System.out.println(e.getMessage());
+				JOptionPane.showMessageDialog(null, e.getMessage());
 				run=false;
 			}
 		}
