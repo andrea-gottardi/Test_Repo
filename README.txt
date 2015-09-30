@@ -16,6 +16,7 @@
     	- 'q' to quit the game
     	
     Lo script di build crea gli artifact del componente nella cartella target/packages.
+    Il jar puo essere eseguito con il comando: java -cp TicTacToe.jar tic.tac.toe.game.Game
     
     La classe di test, TicTacToeTest, verifica il correto funzionamento del modello
     TicTacToe. 
