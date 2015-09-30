@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="fatt.ele" default="build" basedir=".">
+    
+    
+      <description>
+    --------------------------------------------------------------------------------
+        Main script di build del progetto .
+
+        History:
+
+        [30.09.2015] [Andrea.Gottardi]
+        Creata la prima versione di script.
+
+    --------------------------------------------------------------------------------
+        </description>
+
+    <property file="${basedir}/build.properties" />
+    <property environment="env" />
+
+    <tstamp>
+        <format property="build.time" pattern="dd-MM-yyyy HH:mm:ss" />
+    </tstamp>
+
+    <target name="info" description="--> fornisce le informazioni sul sistema sul quale viene fatto il build.">
+        <echo message="${message.header}" />
+        <echo message="       project.name -> ${project.name}" />
+        <echo message="    project.version -> ${project.version}" />
+        <echo message="         build.time -> ${build.time}" />
+        <echo message="           ant.file -> ${ant.file}" />
+        <echo message="        ant.version -> ${ant.version}" />
+        <echo message="       java.version -> ${java.version}" />
+        <echo message="       java.vm.name -> ${java.vm.name}" />
+        <echo message="    java.vm.version -> ${java.vm.version}" />
+        <echo message="            os.name -> ${os.name}" />
+        <echo message="${message.header}" />
+    </target>
+
+    <target name="clean" description="--> elimina gli artifact prodotti dal build.">
+        <delete dir="${target.home}" />
+    </target>
+
+    <target name="init" description="--> inizializza le cartelle per ospitare gli artifact del build.">
+        <mkdir dir="${target.home}" />
+        <mkdir dir="${classes.home}" />
+        <mkdir dir="${packages.home}" />
+    </target>
+
+    <target name="compile" description="--> effettua la compilazione del progetto.">
+        <javac srcdir="${src.home}" destdir="${classes.home}" source="${ant.javac.source}" 
+        	target="${ant.javac.target}" debug="${ant.javac.debug}" deprecation="${ant.javac.deprecation}" 
+        	fork="${ant.javac.fork}" memoryInitialSize="${ant.javac.memoryInitialSize}" 
+        	memoryMaximumSize="${ant.javac.memoryMaximumSize}" encoding="${ant.javac.encoding}" 
+        	includeantruntime="${ant.javac.includeantruntime}">
+        </javac>
+    </target>
+    	
+	 <target name="package" description="--> crea il jar del componente.">
+        <jar destfile="${packages.home}/${artifact.name}">
+            <manifest>
+                <section name="Component Informations">
+                    <attribute name="Main-Class" value="${main.class}" />                 
+                    <attribute name="Specification-Title" value="${project.name}" />
+                    <attribute name="Specification-Version" value="${project.version}" />
+                </section>
+            </manifest>
+            <fileset dir="${classes.home}" />
+        </jar>
+
+    </target>    	
+
+
+    <target name="build" description="--> esegue il build del progetto." depends="info, clean, init, compile, package">
+        <tstamp>
+            <format property="completion.build.time" pattern="HH:mm:ss" />
+        </tstamp>
+        <tstamp>
+            <format property="build.day" pattern="dd-MM-yyyy" />
+        </tstamp>
+        <echo message="Build di:" />
+    	<echo message="- ${packages.home}/${artifact.name}" />
+    	<echo message="- ${packages.home}/${sources.artifact.name}" />    	
+        <echo message="completato con successo." />
+        <echo message="${build.day}, build completato alle ${completion.build.time}." />
+    </target>
+
+  
+
+</project>
